@@ -44,10 +44,7 @@ import info.fandroid.quizapp.quizapplication.listeners.ListItemClickListener;
 import info.fandroid.quizapp.quizapplication.models.quiz.QuizModel;
 import info.fandroid.quizapp.quizapplication.models.quiz.ResultModel;
 import info.fandroid.quizapp.quizapplication.utilities.ActivityUtilities;
-import info.fandroid.quizapp.quizapplication.utilities.AdsUtilities;
-import info.fandroid.quizapp.quizapplication.utilities.BeatBox;
 import info.fandroid.quizapp.quizapplication.utilities.DialogUtilities;
-import info.fandroid.quizapp.quizapplication.utilities.SoundUtilities;
 
 
 public class QuizActivity extends BaseActivity implements RewardedVideoAdListener,  DialogUtilities.OnCompleteListener {
@@ -76,8 +73,6 @@ public class QuizActivity extends BaseActivity implements RewardedVideoAdListene
     private ArrayList<ResultModel> mResultList;
     private RewardedVideoAd mRewardedVideoAd;
 
-    private BeatBox mBeatBox;
-    private List<SoundUtilities> mSounds;
     private boolean isSoundOn;
 
 
@@ -122,8 +117,7 @@ public class QuizActivity extends BaseActivity implements RewardedVideoAdListene
         mBackgroundColorList = new ArrayList<>();
         mResultList = new ArrayList<>();
 
-        mBeatBox = new BeatBox(mActivity);
-        mSounds = mBeatBox.getSounds();
+
     }
 
     private void initView() {
@@ -158,31 +152,16 @@ public class QuizActivity extends BaseActivity implements RewardedVideoAdListene
         showLoader();
 
         isSoundOn = AppPreference.getInstance(mActivity).getBoolean(AppConstants.KEY_SOUND, true);
-        setSpeakerImage();
 
         loadJson();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    private void setSpeakerImage() {
-        if (isSoundOn) {
-            btnSpeaker.setImageResource(R.drawable.ic_speaker);
-        } else {
-            btnSpeaker.setImageResource(R.drawable.ic_speaker_not);
-        }
-    }
+
 
 
     public void initListener() {
-        btnSpeaker.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-            @Override
-            public void onClick(View view) {
-                isSoundOn = !isSoundOn;
-                AppPreference.getInstance(mActivity).setBoolean(AppConstants.KEY_SOUND, isSoundOn);
-                setSpeakerImage();
-            }
-        });
+
 
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -209,15 +188,11 @@ public class QuizActivity extends BaseActivity implements RewardedVideoAdListene
                                 mBackgroundColorList.set(currentItemIndex, AppConstants.COLOR_GREEN);
                                 mScore++;
                                 mIsCorrect = true;
-                                if (isSoundOn) {
-                                    mBeatBox.play(mSounds.get(AppConstants.BUNDLE_KEY_ZERO_INDEX));
-                                }
+
                             } else if (currentItemIndex == clickedAnswerIndex && !(currentItemIndex == mItemList.get(mQuestionPosition).getCorrectAnswer())) {
                                 mBackgroundColorList.set(currentItemIndex, AppConstants.COLOR_RED);
                                 mWrongAns++;
-                                if (isSoundOn) {
-                                    mBeatBox.play(mSounds.get(AppConstants.BUNDLE_KEY_SECOND_INDEX));
-                                }
+
                                 decreaseLifeAndStatus();
                             } else if (currentItemIndex == mItemList.get(mQuestionPosition).getCorrectAnswer()) {
                                 mBackgroundColorList.set(currentItemIndex, AppConstants.COLOR_GREEN);
@@ -228,7 +203,6 @@ public class QuizActivity extends BaseActivity implements RewardedVideoAdListene
                         mBackgroundColorList.set(clickedAnswerIndex, AppConstants.COLOR_GREEN);
                         mScore++;
                          mIsCorrect = true;
-                        mBeatBox.play(mSounds.get(AppConstants.BUNDLE_KEY_ZERO_INDEX));
                     }
 
                      mGivenAnsText = mItemList.get(mQuestionPosition).getAnswers().get(clickedAnswerIndex);
@@ -308,9 +282,7 @@ public class QuizActivity extends BaseActivity implements RewardedVideoAdListene
 
 
     public void setNextQuestion() {
-        if (isSoundOn) {
-            mBeatBox.play(mSounds.get(AppConstants.BUNDLE_KEY_FIRST_INDEX));
-        }
+
         mUserHasPressed = false;
         if (mQuestionPosition < mItemList.size() - 1 && mLifeCounter > 0) {
             mQuestionPosition++;
@@ -452,7 +424,7 @@ public class QuizActivity extends BaseActivity implements RewardedVideoAdListene
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mBeatBox.release();
+
     }
 
     @Override
@@ -460,7 +432,6 @@ public class QuizActivity extends BaseActivity implements RewardedVideoAdListene
         mRewardedVideoAd.resume(this);
 
         // load full screen ad
-        AdsUtilities.getInstance(mContext).loadFullScreenAd(mActivity);
 
         super.onResume();
     }

@@ -40,8 +40,5 @@ public class AboutDevActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void clickView(View view) {
-        ActivityUtilities.getInstance().invokeCustomUrlActivity(AboutDevActivity.this,  CustomUrlActivity.class,
-                getResources().getString(R.string.site), getResources().getString(R.string.site_url), false);
-    }
+
 }

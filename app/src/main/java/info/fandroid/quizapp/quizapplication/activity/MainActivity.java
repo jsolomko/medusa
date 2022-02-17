@@ -21,7 +21,6 @@ import android.widget.TextView;
 
 import com.anjlab.android.iab.v3.BillingProcessor;
 import com.anjlab.android.iab.v3.TransactionDetails;
-import com.google.android.gms.ads.AdView;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
@@ -50,11 +49,10 @@ import info.fandroid.quizapp.quizapplication.listeners.ListItemClickListener;
 import info.fandroid.quizapp.quizapplication.models.notification.NotificationModel;
 import info.fandroid.quizapp.quizapplication.models.quiz.CategoryModel;
 import info.fandroid.quizapp.quizapplication.utilities.ActivityUtilities;
-import info.fandroid.quizapp.quizapplication.utilities.AdsUtilities;
 import info.fandroid.quizapp.quizapplication.utilities.AppUtilities;
 import info.fandroid.quizapp.quizapplication.utilities.DialogUtilities;
 
-public class MainActivity extends BaseActivity implements DialogUtilities.OnCompleteListener, BillingProcessor.IBillingHandler{
+public class MainActivity extends BaseActivity implements DialogUtilities.OnCompleteListener, BillingProcessor.IBillingHandler {
 
     private Activity activity;
     private Context context;
@@ -102,19 +100,6 @@ public class MainActivity extends BaseActivity implements DialogUtilities.OnComp
                 .withActivity(this)
                 .withTranslucentStatusBar(true)
                 .withHeaderBackground(R.drawable.header)
-                .withOnAccountHeaderProfileImageListener(new AccountHeader.OnAccountHeaderProfileImageListener() {
-                    @Override
-                    public boolean onProfileImageClick(View view, IProfile profile, boolean current) {
-                        ActivityUtilities.getInstance().invokeCustomUrlActivity(activity, CustomUrlActivity.class,
-                                getResources().getString(R.string.site), getResources().getString(R.string.site_url), false);
-                        return false;
-                    }
-
-                    @Override
-                    public boolean onProfileImageLongClick(View view, IProfile profile, boolean current) {
-                        return false;
-                    }
-                })
                 .addProfiles(profile)
                 .build();
 
@@ -126,14 +111,14 @@ public class MainActivity extends BaseActivity implements DialogUtilities.OnComp
                 .addDrawerItems(
                         new PrimaryDrawerItem().withName("О приложении").withIcon(R.drawable.ic_dev).withIdentifier(10).withSelectable(false),
 
-                        new SecondaryDrawerItem().withName("YouTube").withIcon(R.drawable.ic_youtube).withIdentifier(20).withSelectable(false),
-                        new SecondaryDrawerItem().withName("Facebook").withIcon(R.drawable.ic_facebook).withIdentifier(21).withSelectable(false),
-                        new SecondaryDrawerItem().withName("Twitter").withIcon(R.drawable.ic_twitter).withIdentifier(22).withSelectable(false),
-                        new SecondaryDrawerItem().withName("Google+").withIcon(R.drawable.ic_google_plus).withIdentifier(23).withSelectable(false),
+                        new SecondaryDrawerItem().withName("ГБ4 Сочи - ОПУ").withIcon(R.drawable.ic_youtube).withIdentifier(20).withSelectable(false),
+//                        new SecondaryDrawerItem().withName("Facebook").withIcon(R.drawable.ic_facebook).withIdentifier(21).withSelectable(false),
+//                        new SecondaryDrawerItem().withName("Twitter").withIcon(R.drawable.ic_twitter).withIdentifier(22).withSelectable(false),
+//                        new SecondaryDrawerItem().withName("Google+").withIcon(R.drawable.ic_google_plus).withIdentifier(23).withSelectable(false),
 
                         new DividerDrawerItem(),
-                        new SecondaryDrawerItem().withName("Настройки").withIcon(R.drawable.ic_settings).withIdentifier(30).withSelectable(false),
-                        new SecondaryDrawerItem().withName("Оцените приложение").withIcon(R.drawable.ic_rating).withIdentifier(31).withSelectable(false),
+//                        new SecondaryDrawerItem().withName("Настройки").withIcon(R.drawable.ic_settings).withIdentifier(30).withSelectable(false),
+//                        new SecondaryDrawerItem().withName("Оцените приложение").withIcon(R.drawable.ic_rating).withIdentifier(31).withSelectable(false),
                         new SecondaryDrawerItem().withName("Поделитесь").withIcon(R.drawable.ic_share).withIdentifier(32).withSelectable(false),
                         new SecondaryDrawerItem().withName("Соглашения").withIcon(R.drawable.ic_privacy_policy).withIdentifier(33).withSelectable(false),
 
@@ -159,15 +144,10 @@ public class MainActivity extends BaseActivity implements DialogUtilities.OnComp
                                 AppUtilities.twitterLink(activity);
                             } else if (drawerItem.getIdentifier() == 23) {
                                 AppUtilities.googlePlusLink(activity);
-                            } else if (drawerItem.getIdentifier() == 30) {
-                                ActivityUtilities.getInstance().invokeNewActivity(activity, SettingsActivity.class, true);
                             } else if (drawerItem.getIdentifier() == 31) {
                                 AppUtilities.rateThisApp(activity);
                             } else if (drawerItem.getIdentifier() == 32) {
                                 AppUtilities.shareApp(activity);
-                            } else if (drawerItem.getIdentifier() == 33) {
-                                ActivityUtilities.getInstance().invokeCustomUrlActivity(activity, CustomUrlActivity.class,
-                                        getResources().getString(R.string.privacy), getResources().getString(R.string.privacy_url), false);
                             } else if (drawerItem.getIdentifier() == 40) {
 
                             }
@@ -199,13 +179,13 @@ public class MainActivity extends BaseActivity implements DialogUtilities.OnComp
         loadJson();
 
         // show banner ads
-        AdsUtilities.getInstance(context).showBannerAd((AdView) findViewById(R.id.adsView));
+//        AdsUtilities.getInstance(context).showBannerAd((AdView) findViewById(R.id.adsView));
     }
 
     private void loadJson() {
         StringBuffer sb = new StringBuffer();
         BufferedReader br = null;
-        try{
+        try {
             br = new BufferedReader(new InputStreamReader(getAssets().open(AppConstants.CONTENT_FILE)));
             String temp;
             while ((temp = br.readLine()) != null)
@@ -246,12 +226,7 @@ public class MainActivity extends BaseActivity implements DialogUtilities.OnComp
     private void initListener() {
 
         //notification view click listener
-        mNotificationView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ActivityUtilities.getInstance().invokeNewActivity(activity, NotificationListActivity.class, false);
-            }
-        });
+
 
         // recycler list item click listener
         adapter.setItemClickListener(new ListItemClickListener() {
@@ -263,23 +238,12 @@ public class MainActivity extends BaseActivity implements DialogUtilities.OnComp
                 boolean purchased = PreferenceManager.getDefaultSharedPreferences(activity).getBoolean(AppConstants.PRODUCT_ID_BOUGHT, false);
                 boolean subscribed = PreferenceManager.getDefaultSharedPreferences(activity).getBoolean(AppConstants.PRODUCT_ID_SUBSCRIBE, false);
 
-                if (position > 3 && !purchased && !subscribed) {
-                    // Toast.makeText(mActivity, R.string.alert_for_purchase , Toast.LENGTH_SHORT).show();
-                    Snackbar.make(view, R.string.alert_for_purchase, Snackbar.LENGTH_LONG)
-                            .setAction("Ок", new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
-                                    ActivityUtilities.getInstance().invokeNewActivity(activity, SettingsActivity.class, true);
-                                }
-                            }).setDuration(4000).show();
-                    return;
-                }
-
                 CategoryModel model = categoryList.get(position);
                 ActivityUtilities.getInstance().invokeCommonQuizActivity(activity, QuizPromptActivity.class, model.getCategoryId(), true);
             }
         });
     }
+
     // received new broadcast
     private BroadcastReceiver newNotificationReceiver = new BroadcastReceiver() {
 
@@ -309,7 +273,6 @@ public class MainActivity extends BaseActivity implements DialogUtilities.OnComp
     }
 
 
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -321,7 +284,7 @@ public class MainActivity extends BaseActivity implements DialogUtilities.OnComp
         initNotification();
 
         // load full screen ad
-       AdsUtilities.getInstance(context).loadFullScreenAd(activity);
+//        AdsUtilities.getInstance(context).loadFullScreenAd(activity);
     }
 
     @Override
@@ -341,14 +304,15 @@ public class MainActivity extends BaseActivity implements DialogUtilities.OnComp
         }
     }
 
-    private String SUBSCRIPTION_ID(){
+    private String SUBSCRIPTION_ID() {
         return getResources().getString(R.string.subscription_id);
     }
-    public void setIsSubscribe(boolean purchased, Context c){
+
+    public void setIsSubscribe(boolean purchased, Context c) {
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(c);
 
-        SharedPreferences.Editor editor= prefs.edit();
+        SharedPreferences.Editor editor = prefs.edit();
 
         editor.putBoolean(AppConstants.PRODUCT_ID_SUBSCRIBE, purchased);
         editor.apply();

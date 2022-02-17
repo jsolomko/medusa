@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.BaseActivity" />
-        <activity android:name=".activity.CustomUrlActivity" />
+        <activity android:name=".activity._CustomUrlActivity" />
         <activity android:name=".activity.AboutDevActivity"></activity>
         <activity
             android:name="info.fandroid.quizapp.quizapplication.activity.QuizPromptActivity"
@@ -45,7 +45,7 @@
             android:theme="@style/AppTheme" />
 
         <activity
-            android:name="info.fandroid.quizapp.quizapplication.activity.SettingsActivity"
+            android:name="info.fandroid.quizapp.quizapplication.activity._SettingsActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:theme="@style/AppTheme" />
 

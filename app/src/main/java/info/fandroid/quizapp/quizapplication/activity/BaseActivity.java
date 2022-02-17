@@ -10,7 +10,6 @@ import android.widget.LinearLayout;
 import android.support.v7.widget.Toolbar;
 
 import info.fandroid.quizapp.quizapplication.R;
-import info.fandroid.quizapp.quizapplication.utilities.AdsUtilities;
 
 public class BaseActivity extends AppCompatActivity {
 
@@ -33,15 +32,12 @@ public class BaseActivity extends AppCompatActivity {
         boolean purchased = PreferenceManager.getDefaultSharedPreferences(activity).getBoolean(PRODUCT_ID_BOUGHT, false);
         boolean subscribed = PreferenceManager.getDefaultSharedPreferences(activity).getBoolean(PRODUCT_ID_SUBSCRIBE, false);
 
-        if (purchased || subscribed) disableAds();
+
 
         //disableAds();
     }
 
-    private void disableAds() {
-        AdsUtilities.getInstance(context).disableBannerAd();
-        AdsUtilities.getInstance(context).disableInterstitialAd();
-    }
+
 
     public void initToolbar(boolean isTitleEnabled) {
         toolbar = (Toolbar) findViewById(R.id.toolbar);

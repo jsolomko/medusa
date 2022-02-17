@@ -15,7 +15,6 @@ import info.fandroid.quizapp.quizapplication.R;
 import info.fandroid.quizapp.quizapplication.constants.AppConstants;
 import info.fandroid.quizapp.quizapplication.data.preference.AppPreference;
 import info.fandroid.quizapp.quizapplication.utilities.ActivityUtilities;
-import info.fandroid.quizapp.quizapplication.utilities.AdsUtilities;
 
 
 public class QuizPromptActivity extends BaseActivity {
@@ -68,9 +67,7 @@ public class QuizPromptActivity extends BaseActivity {
         enableUpButton();
 
         // show full-screen ads
-        AdsUtilities.getInstance(mContext).showFullScreenAd();
         // show banner ads
-        AdsUtilities.getInstance(mContext).showBannerAd((AdView) findViewById(R.id.adsView));
 
     }
 

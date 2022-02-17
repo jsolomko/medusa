@@ -70,14 +70,6 @@
 
         </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/btnSpeaker"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:background="@color/gray"
-            android:layout_alignParentEnd="true"
-            tools:src="@drawable/ic_speaker" />
-
         <TextView
             android:id="@+id/tvQuestionTitle"
             android:layout_width="match_parent"

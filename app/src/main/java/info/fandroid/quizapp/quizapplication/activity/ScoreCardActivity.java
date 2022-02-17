@@ -29,7 +29,6 @@ import info.fandroid.quizapp.quizapplication.adapters.ResultAdapter;
 import info.fandroid.quizapp.quizapplication.constants.AppConstants;
 import info.fandroid.quizapp.quizapplication.models.quiz.ResultModel;
 import info.fandroid.quizapp.quizapplication.utilities.ActivityUtilities;
-import info.fandroid.quizapp.quizapplication.utilities.AdsUtilities;
 
 public class ScoreCardActivity extends BaseActivity implements OnChartValueSelectedListener {
 
@@ -124,9 +123,7 @@ public class ScoreCardActivity extends BaseActivity implements OnChartValueSelec
         mRecyclerResult.setAdapter(mAdapter);
 
         // show full-screen ads
-        AdsUtilities.getInstance(mContext).showFullScreenAd();
         // show banner ads
-       AdsUtilities.getInstance(mContext).showBannerAd((AdView) findViewById(R.id.adsView));
     }
 
     public void initListener() {
