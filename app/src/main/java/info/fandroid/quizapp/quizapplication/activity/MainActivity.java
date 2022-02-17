@@ -44,15 +44,13 @@ import java.util.ArrayList;
 import info.fandroid.quizapp.quizapplication.R;
 import info.fandroid.quizapp.quizapplication.adapters.CategoryAdapter;
 import info.fandroid.quizapp.quizapplication.constants.AppConstants;
-import info.fandroid.quizapp.quizapplication.data.sqlite.NotificationDbController;
 import info.fandroid.quizapp.quizapplication.listeners.ListItemClickListener;
-import info.fandroid.quizapp.quizapplication.models.notification.NotificationModel;
 import info.fandroid.quizapp.quizapplication.models.quiz.CategoryModel;
 import info.fandroid.quizapp.quizapplication.utilities.ActivityUtilities;
 import info.fandroid.quizapp.quizapplication.utilities.AppUtilities;
 import info.fandroid.quizapp.quizapplication.utilities.DialogUtilities;
 
-public class MainActivity extends BaseActivity implements DialogUtilities.OnCompleteListener, BillingProcessor.IBillingHandler {
+public class MainActivity extends BaseActivity implements DialogUtilities.OnCompleteListener {
 
     private Activity activity;
     private Context context;
@@ -66,10 +64,6 @@ public class MainActivity extends BaseActivity implements DialogUtilities.OnComp
     private ArrayList<CategoryModel> categoryList;
     private CategoryAdapter adapter = null;
     private RecyclerView recyclerView;
-
-    CheckSubscribe checks;
-    BillingProcessor bp;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,18 +104,10 @@ public class MainActivity extends BaseActivity implements DialogUtilities.OnComp
                 .withAccountHeader(header)
                 .addDrawerItems(
                         new PrimaryDrawerItem().withName("О приложении").withIcon(R.drawable.ic_dev).withIdentifier(10).withSelectable(false),
-
                         new SecondaryDrawerItem().withName("ГБ4 Сочи - ОПУ").withIcon(R.drawable.ic_youtube).withIdentifier(20).withSelectable(false),
-//                        new SecondaryDrawerItem().withName("Facebook").withIcon(R.drawable.ic_facebook).withIdentifier(21).withSelectable(false),
-//                        new SecondaryDrawerItem().withName("Twitter").withIcon(R.drawable.ic_twitter).withIdentifier(22).withSelectable(false),
-//                        new SecondaryDrawerItem().withName("Google+").withIcon(R.drawable.ic_google_plus).withIdentifier(23).withSelectable(false),
-
                         new DividerDrawerItem(),
-//                        new SecondaryDrawerItem().withName("Настройки").withIcon(R.drawable.ic_settings).withIdentifier(30).withSelectable(false),
-//                        new SecondaryDrawerItem().withName("Оцените приложение").withIcon(R.drawable.ic_rating).withIdentifier(31).withSelectable(false),
                         new SecondaryDrawerItem().withName("Поделитесь").withIcon(R.drawable.ic_share).withIdentifier(32).withSelectable(false),
                         new SecondaryDrawerItem().withName("Соглашения").withIcon(R.drawable.ic_privacy_policy).withIdentifier(33).withSelectable(false),
-
                         new DividerDrawerItem(),
                         new SecondaryDrawerItem().withName("Выход").withIcon(R.drawable.ic_exit).withIdentifier(40).withSelectable(false)
 
@@ -160,9 +146,6 @@ public class MainActivity extends BaseActivity implements DialogUtilities.OnComp
                 .withShowDrawerOnFirstLaunch(false)
                 .withShowDrawerUntilDraggedOpened(false)
                 .build();
-
-        checks = new CheckSubscribe();
-        checks.execute();
     }
 
     @Override
@@ -177,9 +160,6 @@ public class MainActivity extends BaseActivity implements DialogUtilities.OnComp
     private void loadData() {
         showLoader();
         loadJson();
-
-        // show banner ads
-//        AdsUtilities.getInstance(context).showBannerAd((AdView) findViewById(R.id.adsView));
     }
 
     private void loadJson() {
@@ -225,15 +205,10 @@ public class MainActivity extends BaseActivity implements DialogUtilities.OnComp
 
     private void initListener() {
 
-        //notification view click listener
-
-
         // recycler list item click listener
         adapter.setItemClickListener(new ListItemClickListener() {
             @Override
             public void onItemClick(int position, View view) {
-
-                //show snackbar and return if not purchased
 
                 boolean purchased = PreferenceManager.getDefaultSharedPreferences(activity).getBoolean(AppConstants.PRODUCT_ID_BOUGHT, false);
                 boolean subscribed = PreferenceManager.getDefaultSharedPreferences(activity).getBoolean(AppConstants.PRODUCT_ID_SUBSCRIBE, false);
@@ -244,89 +219,12 @@ public class MainActivity extends BaseActivity implements DialogUtilities.OnComp
         });
     }
 
-    // received new broadcast
-    private BroadcastReceiver newNotificationReceiver = new BroadcastReceiver() {
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            initNotification();
-        }
-    };
-
-    public void initNotification() {
-        NotificationDbController notificationDbController = new NotificationDbController(context);
-        TextView notificationCount = (TextView) findViewById(R.id.notificationCount);
-        notificationCount.setVisibility(View.INVISIBLE);
-
-        ArrayList<NotificationModel> notiArrayList = notificationDbController.getUnreadData();
-
-        if (notiArrayList != null && !notiArrayList.isEmpty()) {
-            int totalUnread = notiArrayList.size();
-            if (totalUnread > 0) {
-                notificationCount.setVisibility(View.VISIBLE);
-                notificationCount.setText(String.valueOf(totalUnread));
-            } else {
-                notificationCount.setVisibility(View.INVISIBLE);
-            }
-        }
-
-    }
-
-
     @Override
     protected void onResume() {
         super.onResume();
-
-        //register broadcast receiver
         IntentFilter intentFilter = new IntentFilter(AppConstants.NEW_NOTI);
-        LocalBroadcastManager.getInstance(this).registerReceiver(newNotificationReceiver, intentFilter);
-
-        initNotification();
-
-        // load full screen ad
-//        AdsUtilities.getInstance(context).loadFullScreenAd(activity);
     }
 
-    @Override
-    public void onProductPurchased(String productId, TransactionDetails details) {
-
-    }
-
-    @Override
-    public void onPurchaseHistoryRestored() {
-
-        if (bp.isSubscribed(SUBSCRIPTION_ID())) {
-            setIsSubscribe(true, context);
-            Log.v("TAG", "Subscribe actually restored");
-
-        } else {
-            setIsSubscribe(false, context);
-        }
-    }
-
-    private String SUBSCRIPTION_ID() {
-        return getResources().getString(R.string.subscription_id);
-    }
-
-    public void setIsSubscribe(boolean purchased, Context c) {
-        SharedPreferences prefs = PreferenceManager
-                .getDefaultSharedPreferences(c);
-
-        SharedPreferences.Editor editor = prefs.edit();
-
-        editor.putBoolean(AppConstants.PRODUCT_ID_SUBSCRIBE, purchased);
-        editor.apply();
-    }
-
-    @Override
-    public void onBillingError(int errorCode, Throwable error) {
-
-    }
-
-    @Override
-    public void onBillingInitialized() {
-
-    }
 
     @Override
     public void onComplete(Boolean isOkPressed, String viewIdText) {
@@ -338,23 +236,10 @@ public class MainActivity extends BaseActivity implements DialogUtilities.OnComp
 
     }
 
-    private class CheckSubscribe extends AsyncTask<Void, Void, Void> {
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            String license = getResources().getString(R.string.google_play_license);
-            bp = new BillingProcessor(context, license, MainActivity.this);
-            bp.loadOwnedPurchasesFromGoogle();
-            return null;
-        }
-    }
 
     @Override
     protected void onPause() {
         super.onPause();
-
-        //unregister broadcast receiver
-        LocalBroadcastManager.getInstance(this).unregisterReceiver(newNotificationReceiver);
 
     }
 
