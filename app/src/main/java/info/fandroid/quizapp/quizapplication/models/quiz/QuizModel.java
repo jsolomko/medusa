@@ -12,7 +12,8 @@ public class QuizModel implements Parcelable {
     String questinCategoryId;
     ArrayList<String> backgroundColors;
 
-    public QuizModel(String question, ArrayList<String> answers, int correctAnswer, String questinCategoryId, ArrayList<String> backgroundColors) {
+    public QuizModel(String question, ArrayList<String> answers, int correctAnswer,
+                     String questinCategoryId, ArrayList<String> backgroundColors) {
         this.question = question;
         this.correctAnswer = correctAnswer;
         this.answers = answers;

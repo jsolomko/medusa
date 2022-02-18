@@ -47,7 +47,7 @@ import info.fandroid.quizapp.quizapplication.utilities.ActivityUtilities;
 import info.fandroid.quizapp.quizapplication.utilities.DialogUtilities;
 
 
-public class QuizActivity extends BaseActivity implements RewardedVideoAdListener,  DialogUtilities.OnCompleteListener {
+public class QuizActivity extends BaseActivity implements  DialogUtilities.OnCompleteListener {
 
     private Activity mActivity;
     private Context mContext;
@@ -71,37 +71,17 @@ public class QuizActivity extends BaseActivity implements RewardedVideoAdListene
     private boolean mIsSkipped = false, mIsCorrect = false;
     private String mQuestionText, mGivenAnsText, mCorrectAnsText, mCategoryId;
     private ArrayList<ResultModel> mResultList;
-    private RewardedVideoAd mRewardedVideoAd;
-
-    private boolean isSoundOn;
-
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-         initializeRewardedAds();
-         loadRewardedVideoAds();
-
         initVar();
         initView();
         loadData();
         initListener();
-
-
-    }
-    public void initializeRewardedAds() {
-        MobileAds.initialize(getApplicationContext(), getResources().getString(R.string.app_ad_id));
-
-        mRewardedVideoAd = MobileAds.getRewardedVideoAdInstance(this);
-        mRewardedVideoAd.setRewardedVideoAdListener(this);
     }
 
-    private void loadRewardedVideoAds() {
-        mRewardedVideoAd.loadAd(getResources().getString(R.string.rewarded_ad_unit_id),
-                new AdRequest.Builder().build());
-    }
 
     private void initVar() {
         mActivity = QuizActivity.this;
@@ -116,7 +96,6 @@ public class QuizActivity extends BaseActivity implements RewardedVideoAdListene
         mOptionList = new ArrayList<>();
         mBackgroundColorList = new ArrayList<>();
         mResultList = new ArrayList<>();
-
 
     }
 
@@ -150,19 +129,12 @@ public class QuizActivity extends BaseActivity implements RewardedVideoAdListene
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void loadData() {
         showLoader();
-
-        isSoundOn = AppPreference.getInstance(mActivity).getBoolean(AppConstants.KEY_SOUND, true);
-
         loadJson();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 
-
-
     public void initListener() {
-
-
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -204,27 +176,20 @@ public class QuizActivity extends BaseActivity implements RewardedVideoAdListene
                         mScore++;
                          mIsCorrect = true;
                     }
-
                      mGivenAnsText = mItemList.get(mQuestionPosition).getAnswers().get(clickedAnswerIndex);
                     mCorrectAnsText = mItemList.get(mQuestionPosition).getAnswers().get(mItemList.get(mQuestionPosition).getCorrectAnswer());
-
                     mUserHasPressed = true;
                     mAdapter.notifyDataSetChanged();
                 }
             }
-
         });
 
     }
-
-
-
 
     public void decreaseLifeAndStatus() {
         mLifeCounter--;
         setLifeStatus();
     }
-
     void increaseLifeAndStatus() {
         if (mLifeCounter < AppConstants.BUNDLE_KEY_MAX_LIFE) {
             mLifeCounter++;
@@ -279,10 +244,7 @@ public class QuizActivity extends BaseActivity implements RewardedVideoAdListene
         }
     }
 
-
-
     public void setNextQuestion() {
-
         mUserHasPressed = false;
         if (mQuestionPosition < mItemList.size() - 1 && mLifeCounter > 0) {
             mQuestionPosition++;
@@ -406,7 +368,7 @@ public class QuizActivity extends BaseActivity implements RewardedVideoAdListene
                 updateResultSet();
                 setNextQuestion();
             } else if (viewIdText.equals(AppConstants.BUNDLE_KEY_REWARD_OPTION)) {
-               mRewardedVideoAd.show();
+
             }
         } else if (!isOkPressed && viewIdText.equals(AppConstants.BUNDLE_KEY_REWARD_OPTION)) {
             ActivityUtilities.getInstance().invokeScoreCardActivity(mActivity, ScoreCardActivity.class, mQuestionsCount, mScore, mWrongAns, mSkip, mCategoryId, mResultList, true);
@@ -429,53 +391,7 @@ public class QuizActivity extends BaseActivity implements RewardedVideoAdListene
 
     @Override
     public void onResume() {
-        mRewardedVideoAd.resume(this);
-
-        // load full screen ad
-
         super.onResume();
     }
 
-    @Override
-    public void onRewardedVideoAdLoaded() {
-
-    }
-
-    @Override
-    public void onRewardedVideoAdOpened() {
-
-    }
-
-    @Override
-    public void onRewardedVideoStarted() {
-
-    }
-
-    @Override
-    public void onRewardedVideoAdClosed() {
-        loadRewardedVideoAds();
-
-    }
-
-    @Override
-    public void onRewarded(RewardItem rewardItem) {
-        increaseLifeAndStatus();
-        updateResultSet();
-        setNextQuestion();
-    }
-
-    @Override
-    public void onRewardedVideoAdLeftApplication() {
-
-    }
-
-    @Override
-    public void onRewardedVideoAdFailedToLoad(int i) {
-
-    }
-
-    @Override
-    public void onRewardedVideoCompleted() {
-
-    }
 }

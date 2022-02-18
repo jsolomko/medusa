@@ -29,15 +29,7 @@ public class BaseActivity extends AppCompatActivity {
         activity = BaseActivity.this;
         context = activity.getApplicationContext();
 
-        boolean purchased = PreferenceManager.getDefaultSharedPreferences(activity).getBoolean(PRODUCT_ID_BOUGHT, false);
-        boolean subscribed = PreferenceManager.getDefaultSharedPreferences(activity).getBoolean(PRODUCT_ID_SUBSCRIBE, false);
-
-
-
-        //disableAds();
     }
-
-
 
     public void initToolbar(boolean isTitleEnabled) {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
