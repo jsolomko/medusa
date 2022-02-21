@@ -57,7 +57,6 @@ public class MainActivity extends BaseActivity implements DialogUtilities.OnComp
 
     private Toolbar toolbar;
 
-    private RelativeLayout mNotificationView;
     private AccountHeader header = null;
     private Drawer drawer = null;
 
@@ -77,7 +76,6 @@ public class MainActivity extends BaseActivity implements DialogUtilities.OnComp
         categoryList = new ArrayList<>();
 
 
-        mNotificationView = (RelativeLayout) findViewById(R.id.notificationView);
         recyclerView = (RecyclerView) findViewById(R.id.rvContentScore);
         recyclerView.setLayoutManager(new GridLayoutManager(activity, 2, GridLayoutManager.VERTICAL, false));
 

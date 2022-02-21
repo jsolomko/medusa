@@ -9,8 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.android.gms.ads.AdView;
-
 import info.fandroid.quizapp.quizapplication.R;
 import info.fandroid.quizapp.quizapplication.constants.AppConstants;
 import info.fandroid.quizapp.quizapplication.data.preference.AppPreference;
@@ -24,8 +22,6 @@ public class QuizPromptActivity extends BaseActivity {
     private Button mBtnYes, mBtnNo;
     private TextView firstText, thirdtext;
     private String categoryId, score, questionsCount;
-    //private String questionsCount = "";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,16 +57,11 @@ public class QuizPromptActivity extends BaseActivity {
             firstText.setText(getString(R.string.quiz_promt_first_text, score, questionsCount));
             thirdtext.setText(R.string.quiz_promt_third_text);
         }
-
         initToolbar(true);
         setToolbarTitle(getString(R.string.quiz_prompt));
         enableUpButton();
 
-        // show full-screen ads
-        // show banner ads
-
     }
-
 
     private void initListener() {
         mBtnYes.setOnClickListener(new View.OnClickListener() {
@@ -101,7 +92,5 @@ public class QuizPromptActivity extends BaseActivity {
     public void onBackPressed() {
         ActivityUtilities.getInstance().invokeNewActivity(mActivity, MainActivity.class, true);
     }
-
-
 
 }

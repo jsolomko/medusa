@@ -3,9 +3,25 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/User/AndroidStudioProjects/QuizApp/app/src/main/res/layout/activity_about_dev.xml" value="0.27291666666666664" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/QuizApp/app/src/main/res/layout/activity_score_card.xml" value="0.27291666666666664" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/QuizApp/app/src/main/res/layout/view_loader.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Eugene/AndroidStudioProjects/medusa/app/src/main/res/layout/activity_about_dev.xml" value="0.28958333333333336" />
+        <entry key="..\:/Users/Eugene/AndroidStudioProjects/medusa/app/src/main/res/layout/activity_main.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/Eugene/AndroidStudioProjects/medusa/app/src/main/res/layout/activity_quiz.xml" value="0.1" />
+        <entry key="..\:/Users/Eugene/AndroidStudioProjects/medusa/app/src/main/res/layout/activity_score_card.xml" value="0.28958333333333336" />
+        <entry key="..\:/Users/Eugene/AndroidStudioProjects/medusa/app/src/main/res/layout/activity_settings.xml" value="0.28958333333333336" />
+        <entry key="..\:/Users/Eugene/AndroidStudioProjects/medusa/app/src/main/res/layout/activity_splash.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/Eugene/AndroidStudioProjects/medusa/app/src/main/res/layout/content_banner_ad.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/Eugene/AndroidStudioProjects/medusa/app/src/main/res/layout/content_main.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/Eugene/AndroidStudioProjects/medusa/app/src/main/res/layout/content_notification.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/Eugene/AndroidStudioProjects/medusa/app/src/main/res/layout/fragment_custom_dialog.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/Eugene/AndroidStudioProjects/medusa/app/src/main/res/layout/item_category_recycler.xml" value="0.28958333333333336" />
+        <entry key="..\:/Users/Eugene/AndroidStudioProjects/medusa/app/src/main/res/layout/item_notification.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/Eugene/AndroidStudioProjects/medusa/app/src/main/res/layout/item_quiz.xml" value="0.28958333333333336" />
+        <entry key="..\:/Users/Eugene/AndroidStudioProjects/medusa/app/src/main/res/layout/item_result.xml" value="0.28958333333333336" />
+        <entry key="..\:/Users/Eugene/AndroidStudioProjects/medusa/app/src/main/res/layout/toolbar.xml" value="0.28958333333333336" />
+        <entry key="..\:/Users/Eugene/AndroidStudioProjects/medusa/app/src/main/res/layout/toolbar_main.xml" value="0.25" />
+        <entry key="..\:/Users/Eugene/AndroidStudioProjects/medusa/app/src/main/res/layout/view_loader.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/Eugene/AndroidStudioProjects/medusa/app/src/main/res/menu/menu_delete_all.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/Eugene/AndroidStudioProjects/medusa/app/src/main/res/menu/menu_main.xml" value="0.35104166666666664" />
       </map>
     </option>
   </component>

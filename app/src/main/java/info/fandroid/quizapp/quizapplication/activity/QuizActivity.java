@@ -56,7 +56,6 @@ public class QuizActivity extends BaseActivity implements  DialogUtilities.OnCom
     private RecyclerView mRecyclerQuiz;
     private TextView tvQuestionText;
     private TextView tvQuestionTitle;
-    private ImageView imgFirstLife, imgSecondLife, imgThirdLife, imgFourthLife, imgFifthLife;
 
     private QuizAdapter mAdapter = null;
     private List<QuizModel> mItemList;
@@ -102,11 +101,6 @@ public class QuizActivity extends BaseActivity implements  DialogUtilities.OnCom
     private void initView() {
         setContentView(R.layout.activity_quiz);
 
-        imgFirstLife = (ImageView) findViewById(R.id.firstLife);
-        imgSecondLife = (ImageView) findViewById(R.id.secondLife);
-        imgThirdLife = (ImageView) findViewById(R.id.thirdLife);
-        imgFourthLife = (ImageView) findViewById(R.id.fourthLife);
-        imgFifthLife = (ImageView) findViewById(R.id.fifthLife);
         btnSpeaker = (ImageButton) findViewById(R.id.btnSpeaker);
         btnNext = (Button) findViewById(R.id.btnNext);
 
@@ -160,12 +154,9 @@ public class QuizActivity extends BaseActivity implements  DialogUtilities.OnCom
                                 mBackgroundColorList.set(currentItemIndex, AppConstants.COLOR_GREEN);
                                 mScore++;
                                 mIsCorrect = true;
-
                             } else if (currentItemIndex == clickedAnswerIndex && !(currentItemIndex == mItemList.get(mQuestionPosition).getCorrectAnswer())) {
                                 mBackgroundColorList.set(currentItemIndex, AppConstants.COLOR_RED);
                                 mWrongAns++;
-
-                                decreaseLifeAndStatus();
                             } else if (currentItemIndex == mItemList.get(mQuestionPosition).getCorrectAnswer()) {
                                 mBackgroundColorList.set(currentItemIndex, AppConstants.COLOR_GREEN);
                                 ((LinearLayoutManager) mRecyclerQuiz.getLayoutManager()).scrollToPosition(currentItemIndex);
@@ -184,64 +175,6 @@ public class QuizActivity extends BaseActivity implements  DialogUtilities.OnCom
             }
         });
 
-    }
-
-    public void decreaseLifeAndStatus() {
-        mLifeCounter--;
-        setLifeStatus();
-    }
-    void increaseLifeAndStatus() {
-        if (mLifeCounter < AppConstants.BUNDLE_KEY_MAX_LIFE) {
-            mLifeCounter++;
-            setLifeStatus();
-        }
-    }
-
-    public void setLifeStatus() {
-        switch (mLifeCounter) {
-            case 1:
-                imgFirstLife.setVisibility(View.VISIBLE);
-                imgSecondLife.setVisibility(View.GONE);
-                imgThirdLife.setVisibility(View.GONE);
-                imgFourthLife.setVisibility(View.GONE);
-                imgFifthLife.setVisibility(View.GONE);
-                break;
-            case 2:
-                imgFirstLife.setVisibility(View.VISIBLE);
-                imgSecondLife.setVisibility(View.VISIBLE);
-                imgThirdLife.setVisibility(View.GONE);
-                imgFourthLife.setVisibility(View.GONE);
-                imgFifthLife.setVisibility(View.GONE);
-                break;
-            case 3:
-                imgFirstLife.setVisibility(View.VISIBLE);
-                imgSecondLife.setVisibility(View.VISIBLE);
-                imgThirdLife.setVisibility(View.VISIBLE);
-                imgFourthLife.setVisibility(View.GONE);
-                imgFifthLife.setVisibility(View.GONE);
-                break;
-            case 4:
-                imgFirstLife.setVisibility(View.VISIBLE);
-                imgSecondLife.setVisibility(View.VISIBLE);
-                imgThirdLife.setVisibility(View.VISIBLE);
-                imgFourthLife.setVisibility(View.VISIBLE);
-                imgFifthLife.setVisibility(View.GONE);
-                break;
-            case 5:
-                imgFirstLife.setVisibility(View.VISIBLE);
-                imgSecondLife.setVisibility(View.VISIBLE);
-                imgThirdLife.setVisibility(View.VISIBLE);
-                imgFourthLife.setVisibility(View.VISIBLE);
-                imgFifthLife.setVisibility(View.VISIBLE);
-                break;
-            default:
-                imgFirstLife.setVisibility(View.GONE);
-                imgSecondLife.setVisibility(View.GONE);
-                imgThirdLife.setVisibility(View.GONE);
-                imgFourthLife.setVisibility(View.GONE);
-                imgFifthLife.setVisibility(View.GONE);
-                break;
-        }
     }
 
     public void setNextQuestion() {
