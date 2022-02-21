@@ -102,7 +102,8 @@ public class MainActivity extends BaseActivity implements DialogUtilities.OnComp
                 .withAccountHeader(header)
                 .addDrawerItems(
                         new PrimaryDrawerItem().withName("О приложении").withIcon(R.drawable.ic_dev).withIdentifier(10).withSelectable(false),
-                        new SecondaryDrawerItem().withName("ГБ4 Сочи - ОПУ").withIcon(R.drawable.ic_youtube).withIdentifier(20).withSelectable(false),
+                        new SecondaryDrawerItem().withName("Платные услуги").withIcon(R.drawable.ic_baseline_local_hospital_24).withIdentifier(20).withSelectable(false),
+                        new SecondaryDrawerItem().withName("Сотрудники").withIcon(R.drawable.ic_baseline_person_24).withIdentifier(21).withSelectable(false),
                         new DividerDrawerItem(),
                         new SecondaryDrawerItem().withName("Поделитесь").withIcon(R.drawable.ic_share).withIdentifier(32).withSelectable(false),
                         new SecondaryDrawerItem().withName("Соглашения").withIcon(R.drawable.ic_privacy_policy).withIdentifier(33).withSelectable(false),
@@ -119,6 +120,10 @@ public class MainActivity extends BaseActivity implements DialogUtilities.OnComp
                             Intent intent = null;
                             if (drawerItem.getIdentifier() == 10) {
                                 ActivityUtilities.getInstance().invokeNewActivity(activity, AboutDevActivity.class, false);
+
+                            }
+                            if (drawerItem.getIdentifier() == 21) {
+                                ActivityUtilities.getInstance().invokeNewActivity(activity, StaffActivity.class, false);
 
                             } else if (drawerItem.getIdentifier() == 20) {
                                 AppUtilities.youtubeLink(activity);
