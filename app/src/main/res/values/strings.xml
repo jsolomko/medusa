@@ -140,4 +140,16 @@
     <string name="quiz_promt_first_text">Предыдущий результат: %s из %s</string>
     <string name="quiz_question_title">Вопрос %d из %d</string>
 
+    <!-- staff section -->
+    <string-array name="staff_name">
+        <item>Семыкин Виктор Дмитриевич</item>
+        <item>Попоп Никита Андреевич</item>
+        <item>Шестопалова Оксана Вячеславовна</item>
+    </string-array>
+    <string-array name="staff_description">
+        <item>Заведующий отделением, к.м.н.</item>
+        <item>врач-офтальмолог</item>
+        <item>Медстатист</item>
+    </string-array>
+
 </resources>
