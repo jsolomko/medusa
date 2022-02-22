@@ -152,14 +152,14 @@ public class QuizActivity extends BaseActivity implements  DialogUtilities.OnCom
                         for (int currentItemIndex = 0; currentItemIndex < mOptionList.size(); currentItemIndex++) {
                             if (currentItemIndex == clickedAnswerIndex && currentItemIndex == mItemList.get(mQuestionPosition).getCorrectAnswer()) {
                                 mBackgroundColorList.set(currentItemIndex, AppConstants.COLOR_GREEN);
-                                mScore++;
-                                mIsCorrect = true;
+//                                mScore++;
+//                                mIsCorrect = true;
                             } else if (currentItemIndex == clickedAnswerIndex && !(currentItemIndex == mItemList.get(mQuestionPosition).getCorrectAnswer())) {
-                                mBackgroundColorList.set(currentItemIndex, AppConstants.COLOR_RED);
-                                mWrongAns++;
-                            } else if (currentItemIndex == mItemList.get(mQuestionPosition).getCorrectAnswer()) {
                                 mBackgroundColorList.set(currentItemIndex, AppConstants.COLOR_GREEN);
-                                ((LinearLayoutManager) mRecyclerQuiz.getLayoutManager()).scrollToPosition(currentItemIndex);
+//                                mWrongAns++;
+                            } else if (currentItemIndex == mItemList.get(mQuestionPosition).getCorrectAnswer()) {
+////                                mBackgroundColorList.set(currentItemIndex, AppConstants.COLOR_GREEN);
+//                                ((LinearLayoutManager) mRecyclerQuiz.getLayoutManager()).scrollToPosition(currentItemIndex);
                             }
                         }
                     } else {
