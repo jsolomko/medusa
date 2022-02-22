@@ -37,19 +37,7 @@
     <string name="subscription_id">testapp.testsubscribe</string>
     <string name="cancel">Отмена</string>
 
-    <string name="settings_purchase_summary">Доступ к закрытым тестам и отключение рекламных баннеров</string>
-    <string name="settings_subscribe_summary">Доступ к закрытым тестам, без рекламы на 1 месяц.</string>
-    <string name="settings_purchase">VIP версия</string>
-    <string name="settings_subscribe">Подписка на 1 месяц</string>
 
-    <string name="settings_restore_purchase_success">Покупка восстановлена</string>
-    <string name="settings_purchase_success">Покупка подтверждена</string>
-    <string name="settings_subscribe_success">Подписка подтверждена</string>
-    <string name="settings_purchase_fail">Ошибка покупки</string>
-
-    <string name="dialog_purchase_title">Content locked.</string>
-    <string name="dialog_purchase">In order to view this content, you need to unlock the full version by making a one time purchase.\n\nThis will also remove advertisements throughout the app.</string>
-    <string name="alert_for_purchase">Доступ к данному тесту закрыт. Приобретите полный доступ в настройках приложения.</string>
 
     <!-- other section -->
     <string name="site_menu_share">Поделиться</string>
