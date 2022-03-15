@@ -51,12 +51,25 @@ public class StaffActivity extends BaseActivity {
     }
 
     public List<Staff> getStaffArrayList() {
-        Staff cat1 = new Staff("Мурзик", "Дворовый", R.drawable.ic_baseline_person_24);
-        Staff cat2 = new Staff("Муся", "Норвежская", R.drawable.ic_baseline_person_24);
-        Staff cat3 = new Staff("Рики", "Мусорный", R.drawable.ic_baseline_person_24);
-        staffList.add(cat1);
-        staffList.add(cat2);
-        staffList.add(cat3);
+        Staff Semykin = new Staff("Семыкин Виктор Дмитриевич", "Заведующий отделением, к.м.н.", R.drawable.pl_semykin01);
+        Staff Glushenko = new Staff("Глушенко Юрий Алексеевич", "Врач-офтальмолог", R.drawable.pl_glushenko);
+        Staff Fedotkina = new Staff("Федоткина Юлия Александровна", "Врач-офтальмолог", R.drawable.pl_fedotkina);
+        Staff popov = new Staff("Попов Никита Андреевич", "Врач-офтальмолог", R.drawable.pl_popov);
+        Staff neskubin = new Staff("Нескубин Олег Борисович", "Врач-офтальмолог", R.drawable.pl_neskubin);
+        Staff koperchak = new Staff("Коперчак Илона Алексеевна", "Врач-офтальмолог", R.drawable.pl_koperchak);
+        Staff pl_karagezova = new Staff("Карагезова\n" +
+                "Кристина Александровна", "Врач-офтальмолог, к.м.н.", R.drawable.pl_karagezova);
+        Staff bedikyan = new Staff("Бедикян Рузанна Саркисовна", "Врач-офтальмолог", R.drawable.pl_bedikyan);
+        Staff gorelova = new Staff("Горелова Галина Леонидовна", "Врач-офтальмолог", R.drawable.pl_gorelova);
+        staffList.add(Semykin);
+        staffList.add(Glushenko);
+        staffList.add(Fedotkina);
+        staffList.add(popov);
+        staffList.add(neskubin);
+        staffList.add(koperchak);
+        staffList.add(pl_karagezova);
+        staffList.add(bedikyan);
+        staffList.add(gorelova);
         return staffList;
     }
 }

@@ -59,10 +59,10 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ViewHolder
 
             this.itemClickListener = itemClickListener;
             // Find all views ids
-            imgAns = (ImageView) itemView.findViewById(R.id.ans_icon);
+//            imgAns = (ImageView) itemView.findViewById(R.id.ans_icon);
             tvQuestion = (TextView) itemView.findViewById(R.id.question_text);
             tvGivenAns = (TextView) itemView.findViewById(R.id.given_ans_text);
-            tvCorrectAns = (TextView) itemView.findViewById(R.id.correct_ans_text);
+//            tvCorrectAns = (TextView) itemView.findViewById(R.id.correct_ans_text);
             lytAnsContainer = (RelativeLayout) itemView.findViewById(R.id.your_ans_container);
 
             itemView.setOnClickListener(this);
@@ -89,7 +89,7 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ViewHolder
 
         // setting data over views
         mainHolder.tvQuestion.setText(Html.fromHtml(model.getQuestion()));
-        mainHolder.tvCorrectAns.setText(Html.fromHtml(model.getCorrectAns()));
+//        mainHolder.tvCorrectAns.setText(Html.fromHtml(model.getCorrectAns()));
 
         if (model.isCorrect()) {
             mainHolder.lytAnsContainer.setVisibility(View.GONE);
@@ -106,9 +106,9 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ViewHolder
             imgPosition = AppConstants.BUNDLE_KEY_SECOND_INDEX;
         }
 
-        Glide.with(mContext)
-                .load(mContext.getResources().getIdentifier(AppConstants.DIRECTORY + imgPosition, null, mContext.getPackageName()))
-                .into(mainHolder.imgAns);
+//        Glide.with(mContext)
+//                .load(mContext.getResources().getIdentifier(AppConstants.DIRECTORY + imgPosition, null, mContext.getPackageName()))
+//                .into(mainHolder.imgAns);
 
     }
 }

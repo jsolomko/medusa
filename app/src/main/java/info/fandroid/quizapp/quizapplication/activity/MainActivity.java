@@ -86,12 +86,12 @@ public class MainActivity extends BaseActivity implements DialogUtilities.OnComp
         loadData();
         initListener();
 
-        final IProfile profile = new ProfileDrawerItem().withIcon(R.drawable.ic_dev);
+        final IProfile profile = new ProfileDrawerItem().withIcon(R.drawable.medusa);
 
         header = new AccountHeaderBuilder()
                 .withActivity(this)
                 .withTranslucentStatusBar(true)
-                .withHeaderBackground(R.drawable.header)
+                .withHeaderBackground(R.drawable.template)
                 .addProfiles(profile)
                 .build();
 

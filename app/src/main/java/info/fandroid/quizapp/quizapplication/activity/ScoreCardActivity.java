@@ -80,9 +80,9 @@ public class ScoreCardActivity extends BaseActivity implements OnChartValueSelec
         mBtnShare = (Button) findViewById(R.id.btn_share);
         mBtnPlayAgain = (Button) findViewById(R.id.btn_play_again);
 
-        mScoreTextView = (TextView) findViewById(R.id.txt_score);
-        mWrongAnsTextView = (TextView) findViewById(R.id.txt_wrong);
-        mSkipTextView = (TextView) findViewById(R.id.txt_skip);
+//        mScoreTextView = (TextView) findViewById(R.id.txt_score);
+//        mWrongAnsTextView = (TextView) findViewById(R.id.txt_wrong);
+//        mSkipTextView = (TextView) findViewById(R.id.txt_skip);
         mGreetingTextView = (TextView) findViewById(R.id.greeting_text);
 
         initToolbar(true);
@@ -93,37 +93,35 @@ public class ScoreCardActivity extends BaseActivity implements OnChartValueSelec
 
     public void initFunctionality() {
 
-        mSkip = mQuestionsCount - (mScore + mWrongAns);
+//        mSkip = mQuestionsCount - (mScore + mWrongAns);
+//
+//        mScoreTextView.setText(String.valueOf(mScore));
+//        mWrongAnsTextView.setText(String.valueOf(mWrongAns));
+//        mSkipTextView.setText(String.valueOf(mSkip));
+//
+//        float actualScore = ((float) mScore / (float) (mScore + mWrongAns + mSkip)) * AppConstants.MULTIPLIER_GRADE;
+//        switch (Math.round(actualScore)) {
+//            case 10:
+//            case 9:
+//            case 8:
+//                mGreetingTextView.setText(Html.fromHtml(getResources().getString(R.string.greeting_text3)));
+//                break;
+//            case 7:
+//            case 6:
+//            case 5:
+//                mGreetingTextView.setText(Html.fromHtml(getResources().getString(R.string.greeting_text2)));
+//                break;
+//            default:
+//                mGreetingTextView.setText(Html.fromHtml(getResources().getString(R.string.greeting_text1)));
+//                break;
+//
+//        }
 
-        mScoreTextView.setText(String.valueOf(mScore));
-        mWrongAnsTextView.setText(String.valueOf(mWrongAns));
-        mSkipTextView.setText(String.valueOf(mSkip));
-
-        float actualScore = ((float) mScore / (float) (mScore + mWrongAns + mSkip)) * AppConstants.MULTIPLIER_GRADE;
-        switch (Math.round(actualScore)) {
-            case 10:
-            case 9:
-            case 8:
-                mGreetingTextView.setText(Html.fromHtml(getResources().getString(R.string.greeting_text3)));
-                break;
-            case 7:
-            case 6:
-            case 5:
-                mGreetingTextView.setText(Html.fromHtml(getResources().getString(R.string.greeting_text2)));
-                break;
-            default:
-                mGreetingTextView.setText(Html.fromHtml(getResources().getString(R.string.greeting_text1)));
-                break;
-
-        }
-
-        showPieChart();
+//        showPieChart();
 
         mAdapter = new ResultAdapter(mContext, mActivity, mResultList);
         mRecyclerResult.setAdapter(mAdapter);
 
-        // show full-screen ads
-        // show banner ads
     }
 
     public void initListener() {
@@ -132,7 +130,7 @@ public class ScoreCardActivity extends BaseActivity implements OnChartValueSelec
             public void onClick(View view) {
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.sharing_text, mScore) + " https://play.google.com/store/apps/details?id=" + mActivity.getPackageName());
+                sendIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.sharing_text, mScore));
                 sendIntent.setType("text/plain");
                 startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.send_to)));
             }
@@ -146,7 +144,7 @@ public class ScoreCardActivity extends BaseActivity implements OnChartValueSelec
     }
 
     public void showPieChart() {
-        mPieChart = (PieChart) findViewById(R.id.piechart);
+//        mPieChart = (PieChart) findViewById(R.id.piechart);
         mPieChart.setUsePercentValues(true);
         mPieChart.setDrawHoleEnabled(true);
         mPieChart.setTransparentCircleRadius(AppConstants.TRANSPARENT_CIRCLE_RADIUS);

@@ -30,7 +30,7 @@
                 android:contentDescription="@string/app_name"
                 android:padding="10dp"
                 android:scaleType="centerInside"
-                android:src="@drawable/ic_idea" />
+                android:src="@drawable/medusa" />
 
             <TextView
                 android:id="@+id/first_text"
@@ -68,7 +68,7 @@
                     android:layout_marginEnd="6dp"
                     android:layout_weight="0.5"
                     android:background="@drawable/rectangle_blue"
-                    android:text="yes"
+                    android:text="ДА"
                     android:textColor="@color/white" />
 
                 <Button
@@ -79,7 +79,7 @@
                     android:layout_marginStart="6dp"
                     android:layout_weight="0.5"
                     android:background="@drawable/rectangle_red"
-                    android:text="no"
+                    android:text="НЕТ"
                     android:textColor="@color/white" />
 
             </LinearLayout>

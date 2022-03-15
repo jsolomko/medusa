@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Quiz Application</string>
-    <string name="tv_description">Проверь свои знания</string>
+    <string name="app_name">MEDUSA MOBILE 1.0</string>
+    <string name="tv_description">Тестирование</string>
 
     <string name="tap_again">Нажмите Назад еще раз для выхода</string>
 
@@ -18,9 +18,9 @@
     <string name="site_url">http://www.fandroid.info/</string>
 
     <!-- about developer text  -->
-    <string name="developer_name">Fandroid.info</string>
-    <string name="developer_detail">Уроки по разработке приложений</string>
-    <string name="developer_message">Данное приложение является сборником тестов по андроид-программированию. Приложение можно использовать для проверки своих знаний и для подготовки к собеседованию. Это приложение создано в рамках Продвинутого курса по разработке android приложений. Больше информации о наших курсах смотрите на сайте Fandroid.info, YouTube-канале "Start Android" и наших страницах в социальных сетях</string>
+    <string name="developer_name">MEDUSA офтальмология</string>
+    <string name="developer_detail">Версия приложеняи 1.0</string>
+    <string name="developer_message">Какое нибидь описание</string>
 
     <!-- app ad section -->
     <string name="app_ad_id">123</string>
@@ -83,7 +83,7 @@
     <string name="quiz_close_prompt">Закрыть приложение?</string>
     <string name="share_prompt">Поделитесь результатом!</string>
     <string name="share_now">Поделиться</string>
-    <string name="sharing_text" formatted="false">Мой результат %d. Проверь себя - </string>
+    <string name="sharing_text" formatted="false">Мои варианты ответов %d </string>
     <string name="play_again">Начать заново</string>
     <string name="your_ans">Ваш ответ:</string>
     <string name="correct_ans">Верный ответ:</string>

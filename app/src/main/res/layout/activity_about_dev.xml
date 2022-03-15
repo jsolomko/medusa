@@ -16,14 +16,14 @@
         android:id="@+id/imgDev"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="@dimen/materialize_toolbar"
+        android:layout_marginEnd="8dp"
+        android:onClick="clickView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_dev"
-        android:onClick="clickView"/>
+        app:srcCompat="@drawable/medusa" />
 
     <TextView
         android:id="@+id/tvDevTitle"

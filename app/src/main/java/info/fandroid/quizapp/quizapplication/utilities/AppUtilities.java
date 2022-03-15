@@ -74,7 +74,7 @@ public class AppUtilities {
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
             sendIntent.putExtra(Intent.EXTRA_TEXT, activity.getResources().getString(R.string.share)
-                    + " https://play.google.com/store/apps/details?id=" + appPackageName);
+                    + " Результат");
             sendIntent.setType("text/plain");
             activity.startActivity(sendIntent);
         } catch (Exception e) {

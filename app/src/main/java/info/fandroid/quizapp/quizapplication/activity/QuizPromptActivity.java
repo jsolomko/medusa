@@ -53,10 +53,10 @@ public class QuizPromptActivity extends BaseActivity {
         firstText = (TextView) findViewById(R.id.first_text);
         thirdtext = (TextView) findViewById(R.id.third_text);
 
-        if (score != null && questionsCount != null) {
-            firstText.setText(getString(R.string.quiz_promt_first_text, score, questionsCount));
-            thirdtext.setText(R.string.quiz_promt_third_text);
-        }
+//        if (score != null && questionsCount != null) {
+//            firstText.setText(getString(R.string.quiz_promt_first_text, score, questionsCount));
+//            thirdtext.setText(R.string.quiz_promt_third_text);
+//        }
         initToolbar(true);
         setToolbarTitle(getString(R.string.quiz_prompt));
         enableUpButton();

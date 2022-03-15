@@ -21,128 +21,127 @@
             android:layout_height="wrap_content"
             android:focusableInTouchMode="true">
 
-            <RelativeLayout
-                android:id="@+id/lyt_graph"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+<!--            <RelativeLayout-->
+<!--                android:id="@+id/lyt_graph"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
 
-                <View
-                    android:id="@+id/view_0"
-                    android:layout_width="match_parent"
-                    android:layout_height="0.7dp"
-                    android:layout_below="@+id/piechart"
-                    android:background="@color/dark_blue" />
+<!--                <View-->
+<!--                    android:id="@+id/view_0"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="0.7dp"-->
+<!--                    android:layout_below="@+id/piechart"-->
+<!--                    android:background="@color/dark_blue" />-->
 
-                <LinearLayout
-                    android:id="@+id/score_container"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/view_0"
-                    android:baselineAligned="false"
-                    android:orientation="horizontal"
-                    android:padding="8dp"
-                    android:weightSum="1">
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/score_container"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_below="@+id/view_0"-->
+<!--                    android:baselineAligned="false"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:padding="8dp"-->
+<!--                    android:weightSum="1">-->
 
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.33"
-                        android:gravity="center">
+<!--                    <RelativeLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="0.33"-->
+<!--                        android:gravity="center">-->
 
-                        <TextView
-                            android:id="@+id/score_prompt"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
-                            android:text="@string/score"/>
+<!--                        <TextView-->
+<!--                            android:id="@+id/score_prompt"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_centerHorizontal="true"-->
+<!--                            android:text="@string/score"/>-->
 
-                        <TextView
-                            android:id="@+id/txt_score"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/score_prompt"
-                            android:layout_centerHorizontal="true"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            tools:text="70 / 100" />
+<!--                        <TextView-->
+<!--                            android:id="@+id/txt_score"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_below="@id/score_prompt"-->
+<!--                            android:layout_centerHorizontal="true"-->
+<!--                            android:textSize="18sp"-->
+<!--                            android:textStyle="bold"-->
+<!--                            tools:text="70 / 100" />-->
 
-                    </RelativeLayout>
+<!--                    </RelativeLayout>-->
 
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.33"
-                        android:gravity="center">
+<!--                    <RelativeLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="0.33"-->
+<!--                        android:gravity="center">-->
 
-                        <TextView
-                            android:id="@+id/wrong_prompt"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
-                            android:gravity="center"
-                            android:text="@string/wrong" />
+<!--                        <TextView-->
+<!--                            android:id="@+id/wrong_prompt"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_centerHorizontal="true"-->
+<!--                            android:gravity="center"-->
+<!--                            android:text="@string/wrong" />-->
 
-                        <TextView
-                            android:id="@+id/txt_wrong"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/wrong_prompt"
-                            android:layout_centerHorizontal="true"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            tools:text="5" />
+<!--                        <TextView-->
+<!--                            android:id="@+id/txt_wrong"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_below="@id/wrong_prompt"-->
+<!--                            android:layout_centerHorizontal="true"-->
+<!--                            android:textSize="18sp"-->
+<!--                            android:textStyle="bold"-->
+<!--                            tools:text="5" />-->
 
-                    </RelativeLayout>
-
-
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.33">
-
-                        <TextView
-                            android:id="@+id/skip_prompt"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
-                            android:text="@string/skipped" />
-
-                        <TextView
-                            android:id="@+id/txt_skip"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/skip_prompt"
-                            android:layout_centerHorizontal="true"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            tools:text="3" />
-
-                    </RelativeLayout>
-
-                </LinearLayout>
-
-                <View
-                    android:id="@+id/view_1"
-                    android:layout_width="match_parent"
-                    android:layout_height="0.7dp"
-                    android:layout_below="@id/score_container"
-                    android:background="@color/dark_blue" />
-
-                <com.github.mikephil.charting.charts.PieChart
-                    android:id="@+id/piechart"
-                    android:layout_width="250dp"
-                    android:layout_height="250dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true" />
+<!--                    </RelativeLayout>-->
 
 
-            </RelativeLayout>
+<!--                    <RelativeLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="0.33">-->
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/skip_prompt"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_centerHorizontal="true"-->
+<!--                            android:text="@string/skipped" />-->
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/txt_skip"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_below="@id/skip_prompt"-->
+<!--                            android:layout_centerHorizontal="true"-->
+<!--                            android:textSize="18sp"-->
+<!--                            android:textStyle="bold"-->
+<!--                            tools:text="3" />-->
+
+<!--                    </RelativeLayout>-->
+
+<!--                </LinearLayout>-->
+
+<!--                <View-->
+<!--                    android:id="@+id/view_1"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="0.7dp"-->
+<!--                    android:layout_below="@id/score_container"-->
+<!--                    android:background="@color/dark_blue" />-->
+
+<!--                <com.github.mikephil.charting.charts.PieChart-->
+<!--                    android:id="@+id/piechart"-->
+<!--                    android:layout_width="250dp"-->
+<!--                    android:layout_height="250dp"-->
+<!--                    android:layout_alignParentTop="true"-->
+<!--                    android:layout_centerHorizontal="true" />-->
+
+
+<!--            </RelativeLayout>-->
 
             <TextView
                 android:id="@+id/greeting_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/lyt_graph"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginTop="15dp"
